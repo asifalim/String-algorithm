@@ -10,12 +10,17 @@ int main()
     cin>>t;
     while(t--)
     {
-        cin>>p>>s;
+        cin>>p>>s;   //pattern p and string s
         ss=s.size(),pp=p.size();
         int dp[ss+1][pp+1];
         dp[0][0]=1;
         for(i=1; i<=ss; i++)dp[i][0]=0;
-        for(i=1; i<=pp; i++)dp[0][i]=0;
+        for(i=1;i<=pp;i++)
+        {
+            if(p[i-1]=='*')
+                dp[0][i]=dp[0][i-2];
+            else dp[0][i]=0;
+        }
         for(i=1; i<=ss; i++)
         {
             for(j=1; j<=pp; j++)
