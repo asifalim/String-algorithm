@@ -1,19 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<int> prefix_function (string Z)
+const int mxN=1e5+3;
+int nxt[mxN];
+void prefix_function(string s)
 {
-    int n = (int) Z.length();
-    vector<int> F(n);
-    F[0]=0;
-    for (int i=1; i<n; ++i)
+    int len=s.size(),k=-1,i=0;
+    nxt[0]=-1;
+    while(i<len)
     {
-        int j = F[i-1];
-        while (j > 0 && Z[i] != Z[j])
-            j = F[j-1];
-        if (Z[i] == Z[j])  ++j;
-        F[i] = j;
+        if(k==-1 or s[i]==s[k])nxt[++i]=++k;
+        else k=nxt[k];
     }
-    return F;
 }
 int main()
 {
@@ -23,15 +20,12 @@ int main()
     {
         string s,ss,sss;
         cin>>s>>ss;
-        n=ss.size()*2;
         int cn=0;
         sss+=(ss+"$"+s);
-        vector<int>v;
-        v=prefix_function(sss);
-        //bool f=true;
-        for(i=0; i<v.size(); i++)
+        prefix_function(sss);
+        for(i=0; i<=sss.size(); i++)
         {
-            if(v[i]==ss.size())
+            if(nxt[i]==ss.size())
             {
                 cn++;
                 cout<<i-n<<" ";//for finding index
