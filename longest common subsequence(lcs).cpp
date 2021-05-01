@@ -29,3 +29,12 @@ int main()
     }
     return 0;
 }
+                                                  //Rcursion form with memorization
+/*int rec(int idx1,int idx2)
+{
+   if(idx1<0 or idx2<0)return 0;
+   if(~dp[idx1][idx2])return dp[idx1][idx2];
+   if(s[idx1]==ss[idx2])return dp[idx1][idx2]=1+rec(idx1-1,idx2-1);
+   return dp[idx1][idx2]=max(rec(idx1,idx2-1),rec(idx1-1,idx2));
+}
+cout<<rec(s.size()-1,ss.size()-1)<<endl;*/
