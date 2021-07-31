@@ -20,15 +20,15 @@ int main()
     {
         string s,ss,sss;
         cin>>s>>ss;
-        int cn=0;
+        int cn=0;n=ss.size();
         sss+=(ss+"$"+s);
         prefix_function(sss);
         for(i=0; i<=sss.size(); i++)
         {
-            if(nxt[i]==ss.size())
+            if(nxt[i]==n)
             {
                 cn++;
-                cout<<i-n<<" ";//for finding index
+                cout<<i-2*n-1<<" ";//for finding index
             }
         }
         cout<<"Case "<<k++<<": "<<cn<<endl;
